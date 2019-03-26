@@ -1,26 +1,42 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { CheckTutorial } from './providers/check-tutorial.service';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/tutorial',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    path: 'account',
+    loadChildren: './pages/account/account.module#AccountModule'
   },
   {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    path: 'support',
+    loadChildren: './pages/support/support.module#SupportModule'
+  },
+  {
+    path: 'login',
+    loadChildren: './pages/login/login.module#LoginModule'
+  },
+  {
+    path: 'signup',
+    loadChildren: './pages/signup/signup.module#SignUpModule'
+  },
+  {
+    path: 'app',
+    loadChildren: './pages/tabs-page/tabs-page.module#TabsModule'
+  },
+  {
+    path: 'tutorial',
+    loadChildren: './pages/tutorial/tutorial.module#TutorialModule',
+    canLoad: [CheckTutorial]
   }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

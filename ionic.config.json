@@ -1,6 +1,7 @@
 {
-  "name": "tha",
-  "integrations": {},
+  "name": "ionic-conference-app",
   "type": "angular",
-  "id": "e51b68ab"
+  "integrations": {
+    "cordova": {}
+  }
 }
